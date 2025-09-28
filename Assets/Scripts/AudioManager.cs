@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 [System.Serializable]
 public class Sound
 {
@@ -30,8 +28,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-
-
     private void BuildDictionary()
     {
         _soundDic = new Dictionary<SoundType, AudioClip>();
@@ -40,7 +36,6 @@ public class AudioManager : MonoBehaviour
             _soundDic[s.type] = s.clip;
         }
     }
-
 
     public void PlayWalkSound(bool isWalking, bool isRunning)
     {

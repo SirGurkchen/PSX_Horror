@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Night1
   m_EditorClassIdentifier: 
   nightNumber: 1
+  nightText: Time to wait for the bus
   nightTimer: 3
   busSpawnTimer: 1
-  busDepartTimer: 30
+  busDepartTimer: 3

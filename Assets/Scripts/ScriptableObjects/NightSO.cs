@@ -4,6 +4,7 @@ using UnityEngine;
 public class NightSO : ScriptableObject
 {
     public int nightNumber;
+    public string nightText;
     public float nightTimer;
     public float busSpawnTimer;
     public float busDepartTimer;

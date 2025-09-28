@@ -18,7 +18,7 @@ public class GameLogic : MonoBehaviour
             border.OnBorderHit += Border_OnBorderHit;
         }
         _nightIntroManager.ShowNight();
-        _busSpawner.StartNight(_nightIntroManager.GetNight().busSpawnTimer);
+        _busSpawner.StartNight(_nightIntroManager.GetNight().busSpawnTimer + _nightIntroManager.GetNight().nightTimer);
         _busLogic.SetDepartTimer(_nightIntroManager.GetNight().busDepartTimer);
 
         _busDestroyer.OnBusDestroy += _busDestroyer_OnBusDestroy;
@@ -42,5 +42,13 @@ public class GameLogic : MonoBehaviour
         yield return new WaitForSeconds(returnTextTimer);
 
         _uiManager.DisableReturnText();
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var border in _borderLogic)
+        {
+            border.OnBorderHit -= Border_OnBorderHit;
+        }
     }
 }

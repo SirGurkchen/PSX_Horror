@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Night2
   m_EditorClassIdentifier: 
   nightNumber: 2
+  nightText: I have to wait for the bus again.
   nightTimer: 3
   busSpawnTimer: 15
   busDepartTimer: 10

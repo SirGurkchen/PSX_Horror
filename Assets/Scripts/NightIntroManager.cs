@@ -9,6 +9,8 @@ public class NightIntroManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _nightText;
     [SerializeField] private BusDestroyer _busDestroyer;
     [SerializeField] private NightSO[] _nightSOs;
+    [SerializeField] private NightManager _nightManager;
+
 
     private int _nightCount = 0;
 
@@ -19,7 +21,6 @@ public class NightIntroManager : MonoBehaviour
 
     private void _busDestroyer_OnBusDestroy()
     {
-        _nightCount++;
         ShowBlack();
         Invoke("ShowNight", 2f);
     }
@@ -55,11 +56,22 @@ public class NightIntroManager : MonoBehaviour
     {
         _nightUI.SetActive(true);
         _nightText.text = "Night " + nightNumber;
+        _nightManager.ChooseNight(_nightSOs[_nightCount]);
         Time.timeScale = 0f;
     }
 
     public NightSO GetNight()
     {
         return _nightSOs[_nightCount];
+    }
+
+    public void IncreaseNight()
+    {
+        _nightCount++;
+    }
+
+    private void OnDestroy()
+    {
+        _busDestroyer.OnBusDestroy -= _busDestroyer_OnBusDestroy;
     }
 }
