@@ -16,4 +16,4 @@ MonoBehaviour:
   nightText: Time to wait for the bus
   nightTimer: 3
   busSpawnTimer: 1
-  busDepartTimer: 3
+  busDepartTimer: 5

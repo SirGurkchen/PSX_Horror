@@ -26,6 +26,7 @@ public class GameLogic : MonoBehaviour
 
     private void _busDestroyer_OnBusDestroy()
     {
+        CameraManager.Instance.SwitchToPlayerCam();
         _busSpawner.StartNight(_nightIntroManager.GetNight().busSpawnTimer + _nightIntroManager.GetNight().nightTimer);
         _busLogic.SetDepartTimer(_nightIntroManager.GetNight().busDepartTimer);
     }

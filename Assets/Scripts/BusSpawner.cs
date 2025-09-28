@@ -15,5 +15,7 @@ public class BusSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(timer);
         _busObject.SetActive(true);
+        Camera busCam = _busObject.GetComponentInChildren<Camera>();
+        CameraManager.Instance.RegisterBusCamera(busCam);
     }
 }
