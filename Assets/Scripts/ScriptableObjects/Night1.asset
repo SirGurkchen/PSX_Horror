@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nightNumber: 1
   nightTimer: 3
-  busSpawnTimer: 10
-  busDepartTimer: 10
+  busSpawnTimer: 1
+  busDepartTimer: 30

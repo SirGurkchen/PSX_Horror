@@ -33,14 +33,11 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7602432274432917622}
-  - {fileID: 9000998797591001847}
-  - {fileID: 5801015037649708590}
-  - {fileID: 7812939342245706234}
   - {fileID: 3133040336024942575}
   - {fileID: 2311296728406448669}
   - {fileID: 5517023919424741831}
   - {fileID: 8696142021022849108}
+  - {fileID: 710532226055456047}
   m_Father: {fileID: 6006231241160782557}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2858980562023252346
@@ -158,7 +155,7 @@ GameObject:
   - component: {fileID: 7812939342245706234}
   - component: {fileID: 6511364685477184570}
   - component: {fileID: 7588903513612254700}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube.015
   m_TagString: BusDoor
   m_Icon: {fileID: 0}
@@ -174,11 +171,11 @@ Transform:
   m_GameObject: {fileID: 551441024940131703}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: -0, z: -0, w: -0.00000014901163}
-  m_LocalPosition: {x: -0.025956973, y: 0.016358413, z: -0.0018562293}
+  m_LocalPosition: {x: -0.025957031, y: 0.01635841, z: -0.0018562293}
   m_LocalScale: {x: -1.0244582, y: -1, z: -1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1181714544757976431}
+  m_Father: {fileID: 8759564924641983320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6511364685477184570
 MeshFilter:
@@ -234,6 +231,72 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &596747764593790128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4741015150051765816}
+  m_Layer: 7
+  m_Name: Door1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4741015150051765816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596747764593790128}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7602432274432917622}
+  - {fileID: 9000998797591001847}
+  m_Father: {fileID: 710532226055456047}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3435163365665620881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 710532226055456047}
+  m_Layer: 7
+  m_Name: Doors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &710532226055456047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435163365665620881}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4741015150051765816}
+  - {fileID: 8759564924641983320}
+  m_Father: {fileID: 1181714544757976431}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3984870664046303262
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +308,7 @@ GameObject:
   - component: {fileID: 7602432274432917622}
   - component: {fileID: 6209657445220225481}
   - component: {fileID: 4715756745745194523}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube.009
   m_TagString: BusDoor
   m_Icon: {fileID: 0}
@@ -261,11 +324,11 @@ Transform:
   m_GameObject: {fileID: 3984870664046303262}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04654376, y: 0.016358413, z: -0.0018562293}
+  m_LocalPosition: {x: 0.046543732, y: 0.01635841, z: -0.0018562293}
   m_LocalScale: {x: 1.0244582, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1181714544757976431}
+  m_Father: {fileID: 4741015150051765816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6209657445220225481
 MeshFilter:
@@ -332,7 +395,7 @@ GameObject:
   - component: {fileID: 5801015037649708590}
   - component: {fileID: 2166274820577184832}
   - component: {fileID: 5789699456932968068}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube.014
   m_TagString: BusDoor
   m_Icon: {fileID: 0}
@@ -348,11 +411,11 @@ Transform:
   m_GameObject: {fileID: 4614950397681566841}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.013338566, y: 0.016358413, z: -0.0018562293}
+  m_LocalPosition: {x: -0.013338623, y: 0.01635841, z: -0.0018562293}
   m_LocalScale: {x: 1.0244582, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1181714544757976431}
+  m_Father: {fileID: 8759564924641983320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2166274820577184832
 MeshFilter:
@@ -505,7 +568,7 @@ GameObject:
   - component: {fileID: 9000998797591001847}
   - component: {fileID: 4984083593645067335}
   - component: {fileID: 8386533199312650350}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube.013
   m_TagString: BusDoor
   m_Icon: {fileID: 0}
@@ -521,11 +584,11 @@ Transform:
   m_GameObject: {fileID: 5748366694527555235}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: -0, z: -0, w: -0.00000014901163}
-  m_LocalPosition: {x: 0.033925332, y: 0.016358413, z: -0.0018562293}
+  m_LocalPosition: {x: 0.03392532, y: 0.01635841, z: -0.0018562293}
   m_LocalScale: {x: -1.0244582, y: -1, z: -1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1181714544757976431}
+  m_Father: {fileID: 4741015150051765816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4984083593645067335
 MeshFilter:
@@ -597,7 +660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6006231241160782557
 Transform:
   m_ObjectHideFlags: 0
@@ -627,6 +690,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 4753783552270217293}
+  _destroyer: {fileID: 0}
+  _busWaitTime: 0
   _drivingSpeed: 50
 --- !u!1 &7221276316735856461
 GameObject:
@@ -886,3 +951,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7937093628410922759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8759564924641983320}
+  m_Layer: 7
+  m_Name: Door2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8759564924641983320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7937093628410922759}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5801015037649708590}
+  - {fileID: 7812939342245706234}
+  m_Father: {fileID: 710532226055456047}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
