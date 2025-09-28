@@ -5,6 +5,10 @@ public class GameLogic : MonoBehaviour
 {
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private BorderLogic[] _borderLogic;
+    [SerializeField] private NightIntroManager _nightIntroManager;
+    [SerializeField] private BusSpawner _busSpawner;
+    [SerializeField] private BusLogic _busLogic;
+    [SerializeField] private BusDestroyer _busDestroyer;
     [SerializeField] private const float returnTextTimer = 2f;
 
     private void Start()
@@ -13,6 +17,17 @@ public class GameLogic : MonoBehaviour
         {
             border.OnBorderHit += Border_OnBorderHit;
         }
+        _nightIntroManager.ShowNight();
+        _busSpawner.StartNight(_nightIntroManager.GetNight().busSpawnTimer);
+        _busLogic.SetDepartTimer(_nightIntroManager.GetNight().busDepartTimer);
+
+        _busDestroyer.OnBusDestroy += _busDestroyer_OnBusDestroy;
+    }
+
+    private void _busDestroyer_OnBusDestroy()
+    {
+        _busSpawner.StartNight(_nightIntroManager.GetNight().busSpawnTimer + _nightIntroManager.GetNight().nightTimer);
+        _busLogic.SetDepartTimer(_nightIntroManager.GetNight().busDepartTimer);
     }
 
     private void Border_OnBorderHit()
