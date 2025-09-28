@@ -30,6 +30,8 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+
+
     private void BuildDictionary()
     {
         _soundDic = new Dictionary<SoundType, AudioClip>();
