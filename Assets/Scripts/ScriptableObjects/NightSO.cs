@@ -8,4 +8,5 @@ public class NightSO : ScriptableObject
     public float nightTimer;
     public float busSpawnTimer;
     public float busDepartTimer;
+    public float moonBlockerOffset;
 }

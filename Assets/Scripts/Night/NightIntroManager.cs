@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class NightIntroManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _nightUI;
-    [SerializeField] private TextMeshProUGUI _nightText;
     [SerializeField] private BusDestroyer _busDestroyer;
     [SerializeField] private NightSO[] _nightSOs;
     [SerializeField] private NightManager _nightManager;
+    [SerializeField] private UIManager _uiManager;
 
 
     private int _nightCount = 0;
@@ -21,7 +20,7 @@ public class NightIntroManager : MonoBehaviour
 
     private void _busDestroyer_OnBusDestroy()
     {
-        ShowBlack();
+        _uiManager.ShowBlackScreen();
         Invoke("ShowNight", 2f);
     }
 
@@ -29,33 +28,26 @@ public class NightIntroManager : MonoBehaviour
     {
         if (_nightCount >= _nightSOs.Length) return;
 
-        ShowNightUI(_nightSOs[_nightCount].nightNumber);
+        StartNight(_nightSOs[_nightCount].nightNumber);
         StartCoroutine(ShowNightScreen(_nightSOs[_nightCount].nightTimer));
-    }
-
-    private void ShowBlack()
-    {
-        _nightText.text = string.Empty;
-        _nightUI.SetActive(true);
     }
 
     private IEnumerator ShowNightScreen(float timer)
     {
         yield return new WaitForSecondsRealtime(timer);
 
-        DisableNightUI();
+        DisableNightIntro();
     }
 
-    private void DisableNightUI()
+    private void DisableNightIntro()
     {
-        _nightUI.SetActive(false);
+        _uiManager.DisableNightUI();
         Time.timeScale = 1f;
     }
 
-    private void ShowNightUI(int nightNumber)
+    private void StartNight(int nightNumber)
     {
-        _nightUI.SetActive(true);
-        _nightText.text = "Night " + nightNumber;
+        _uiManager.ShowNightUI(nightNumber);
         _nightManager.ChooseNight(_nightSOs[_nightCount]);
         Time.timeScale = 0f;
     }

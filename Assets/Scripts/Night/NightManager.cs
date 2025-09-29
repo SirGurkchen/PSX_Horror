@@ -6,6 +6,7 @@ public class NightManager : MonoBehaviour
     [SerializeField] private NightIntroManager _intro;
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private float _textTimer;
+    [SerializeField] private GameObject _moonBlocker;
 
     public void ChooseNight(NightSO night)
     {
@@ -27,6 +28,7 @@ public class NightManager : MonoBehaviour
 
     private void PlayNightTwo(NightSO night)
     {
+        MoveEarthObject(night.moonBlockerOffset);
         StartCoroutine(ShowNightText(night));
     }
 
@@ -37,5 +39,10 @@ public class NightManager : MonoBehaviour
         yield return new WaitForSeconds(_textTimer);
 
         _uiManager.HideBusText();
+    }
+
+    private void MoveEarthObject(float offset)
+    {
+        _moonBlocker.transform.position += new Vector3(0, offset, 0);
     }
 }

@@ -6501,6 +6501,7 @@ MonoBehaviour:
   _busSpawner: {fileID: 168990471}
   _busLogic: {fileID: 539284678}
   _busDestroyer: {fileID: 977710142}
+  _audioManager: {fileID: 180634062}
 --- !u!4 &709640220
 Transform:
   m_ObjectHideFlags: 0
@@ -6637,13 +6638,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5e018f1604ebb46a86c2c9d669748d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nightUI: {fileID: 804900700}
-  _nightText: {fileID: 1706408104}
   _busDestroyer: {fileID: 977710142}
   _nightSOs:
   - {fileID: 11400000, guid: 94d7d91076c991549a4f4f75a3cd8a22, type: 2}
   - {fileID: 11400000, guid: 1348c1c5382265f49b215127d36753b7, type: 2}
   _nightManager: {fileID: 1299341541}
+  _uiManager: {fileID: 850531527}
 --- !u!4 &791084856
 Transform:
   m_ObjectHideFlags: 0
@@ -6841,6 +6841,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _returnText: {fileID: 1156227471}
   _busText: {fileID: 353265263}
+  _nightText: {fileID: 1706408104}
+  _nightUI: {fileID: 804900700}
+  _sprintBar: {fileID: 1066221009}
 --- !u!4 &850531528
 Transform:
   m_ObjectHideFlags: 0
@@ -6884,7 +6887,7 @@ Transform:
   m_GameObject: {fileID: 898878425}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -183.66, y: 84.18, z: 323.31}
+  m_LocalPosition: {x: -183.66, y: 85, z: 323.31}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -7139,6 +7142,11 @@ Transform:
 --- !u!1 &1061391806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+  m_PrefabInstance: {fileID: 1440114987}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1066221009 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4459864850831721272, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
   m_PrefabInstance: {fileID: 1440114987}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1131449108
@@ -17526,6 +17534,7 @@ MonoBehaviour:
   _intro: {fileID: 791084855}
   _uiManager: {fileID: 850531527}
   _textTimer: 3
+  _moonBlocker: {fileID: 898878425}
 --- !u!4 &1299341542
 Transform:
   m_ObjectHideFlags: 0

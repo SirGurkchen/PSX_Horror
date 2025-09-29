@@ -66,4 +66,9 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
+
+    public void DisableWalkingAudio()
+    {
+        _walkingAudioSource.Stop();
+    }
 }

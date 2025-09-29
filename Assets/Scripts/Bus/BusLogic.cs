@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class BusLogic : MonoBehaviour
 {
+    public event Action OnPlayerHit;
+
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private BusDestroyer _destroyer;
     [SerializeField] private float _busWaitTime;
@@ -11,13 +14,22 @@ public class BusLogic : MonoBehaviour
     private RigidbodyConstraints _originalConstraints;
     private Vector3 _originalPosition;
 
+    private enum State
+    {
+        Driving,
+        Standing
+    }
+    private State _currentState;
+
     private void Start()
     {
         _rb.linearVelocity = new Vector3(_drivingSpeed, 0f, 0f);
         _originalConstraints = _rb.constraints;
         _originalPosition = this.transform.position;
+        _currentState = State.Driving;
         _destroyer.OnBusDestroy += _destroyer_OnBusDestroy;
     }
+
 
     private void _destroyer_OnBusDestroy()
     {
@@ -28,6 +40,7 @@ public class BusLogic : MonoBehaviour
     {
         _rb.linearVelocity = Vector3.zero;
         _rb.constraints = RigidbodyConstraints.FreezeAll;
+        _currentState = State.Standing;
         StartCoroutine(ResumeBus());
     }
 
@@ -37,6 +50,7 @@ public class BusLogic : MonoBehaviour
 
         _rb.constraints = _originalConstraints;
         _rb.linearVelocity = new Vector3(_drivingSpeed, 0f, 0f);
+        _currentState = State.Driving;
     }
 
     public void SetDepartTimer(float departTimer)
@@ -48,6 +62,15 @@ public class BusLogic : MonoBehaviour
     {
         transform.position = _originalPosition;
         gameObject.SetActive(false);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (_currentState == State.Driving && collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Hit Player!");
+            OnPlayerHit?.Invoke();
+        }
     }
 
     private void OnDestroy()

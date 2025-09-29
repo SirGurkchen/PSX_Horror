@@ -17,3 +17,4 @@ MonoBehaviour:
   nightTimer: 3
   busSpawnTimer: 15
   busDepartTimer: 10
+  moonBlockerOffset: 5
