@@ -68,7 +68,6 @@ public class BusLogic : MonoBehaviour
     {
         if (_currentState == State.Driving && collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Hit Player!");
             OnPlayerHit?.Invoke();
         }
     }

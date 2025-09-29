@@ -1410,6 +1410,37 @@ MonoBehaviour:
   _destroyer: {fileID: 977710142}
   _busWaitTime: 1
   _drivingSpeed: 40
+--- !u!1 &637394404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 637394405}
+  m_Layer: 0
+  m_Name: StartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &637394405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637394404}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.313, y: 0.1, z: -8.652}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705123288
 GameObject:
   m_ObjectHideFlags: 0
@@ -17535,6 +17566,8 @@ MonoBehaviour:
   _uiManager: {fileID: 850531527}
   _textTimer: 3
   _moonBlocker: {fileID: 898878425}
+  _playerObject: {fileID: 1061391806}
+  _playerStartPos: {fileID: 637394405}
 --- !u!4 &1299341542
 Transform:
   m_ObjectHideFlags: 0
@@ -23395,3 +23428,4 @@ SceneRoots:
   - {fileID: 1299341542}
   - {fileID: 1621505767}
   - {fileID: 374243631}
+  - {fileID: 637394405}

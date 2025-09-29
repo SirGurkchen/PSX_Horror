@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
@@ -14,31 +15,56 @@ public class GameLogic : MonoBehaviour
 
     private void Start()
     {
+        // Acces Player Borders
         foreach (var border in _borderLogic)
         {
             border.OnBorderHit += Border_OnBorderHit;
         }
+        
+        // Show Number of Night Screen
         _nightIntroManager.ShowNight();
+
+        // Spawn Bus in the Game after Spawn Timer + Offset
         _busSpawner.StartNight(_nightIntroManager.GetNight().busSpawnTimer + _nightIntroManager.GetNight().nightTimer);
+
+        // Set the Bus Deaprt Timer for the night
         _busLogic.SetDepartTimer(_nightIntroManager.GetNight().busDepartTimer);
+
+        // Event if Bus reaches the end of the Street
         _busDestroyer.OnBusDestroy += _busDestroyer_OnBusDestroy;
+
+        // Event if the BUs hits the Player
         _busLogic.OnPlayerHit += _busLogic_OnPlayerHit;
     }
 
     private void _busLogic_OnPlayerHit()
     {
-        _uiManager.ShowBlackScreen();
+        _uiManager.ShowDeathScreen();
+
+        // Deactivates Bus Object
         _busLogic.gameObject.SetActive(false);
+
+        // Disables Walking Audio of Player (Needed if the player walks/runs while being hit)
         _audioManager.DisableWalkingAudio();
+
+        // Disables Sprint Bar if player sprints while beind hit
         _uiManager.DisableSprintBar();
-        Time.timeScale = 0f;
-        Debug.Log("Death!");
+
+        Invoke("ReturnToMainMenu", 2f);
+    }
+
+    private void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     private void _busDestroyer_OnBusDestroy()
     {
         CameraManager.Instance.SwitchToPlayerCam();
+
+        // Spawn Bus in the Game after Spawn Timer + Offset
         _busSpawner.StartNight(_nightIntroManager.GetNight().busSpawnTimer + _nightIntroManager.GetNight().nightTimer);
+        // Set the Bus Deaprt Timer for the night
         _busLogic.SetDepartTimer(_nightIntroManager.GetNight().busDepartTimer);
     }
 

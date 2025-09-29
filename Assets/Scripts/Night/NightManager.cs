@@ -7,9 +7,13 @@ public class NightManager : MonoBehaviour
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private float _textTimer;
     [SerializeField] private GameObject _moonBlocker;
+    [SerializeField] private GameObject _playerObject;
+    [SerializeField] private Transform _playerStartPos;
 
     public void ChooseNight(NightSO night)
     {
+        ResetPlayerPosition();
+
         switch (night.nightNumber)
         {
             case 1:
@@ -44,5 +48,11 @@ public class NightManager : MonoBehaviour
     private void MoveEarthObject(float offset)
     {
         _moonBlocker.transform.position += new Vector3(0, offset, 0);
+    }
+
+    private void ResetPlayerPosition()
+    {
+        _playerObject.transform.position = _playerStartPos.position;
+        _playerObject.transform.rotation = Quaternion.identity;
     }
 }

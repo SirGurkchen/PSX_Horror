@@ -46,6 +46,13 @@ public class UIManager : MonoBehaviour
         _nightUI.SetActive(true);
     }
 
+    public void ShowDeathScreen()
+    {
+        _nightText.text = "Dead";
+        _nightText.color = Color.darkRed;
+        _nightUI.SetActive(true);
+    }
+
     public void DisableSprintBar()
     {
         _sprintBar.SetActive(false);
