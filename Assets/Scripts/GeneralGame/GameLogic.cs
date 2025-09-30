@@ -24,12 +24,6 @@ public class GameLogic : MonoBehaviour
         // Show Number of Night Screen
         _nightIntroManager.ShowNight();
 
-        // Spawn Bus in the Game after Spawn Timer + Offset
-        _busSpawner.StartNight(_nightIntroManager.GetNight().busSpawnTimer + _nightIntroManager.GetNight().nightTimer);
-
-        // Set the Bus Deaprt Timer for the night
-        _busLogic.SetDepartTimer(_nightIntroManager.GetNight().busDepartTimer);
-
         // Event if Bus reaches the end of the Street
         _busDestroyer.OnBusDestroy += _busDestroyer_OnBusDestroy;
 
@@ -61,11 +55,6 @@ public class GameLogic : MonoBehaviour
     private void _busDestroyer_OnBusDestroy()
     {
         CameraManager.Instance.SwitchToPlayerCam();
-
-        // Spawn Bus in the Game after Spawn Timer + Offset
-        _busSpawner.StartNight(_nightIntroManager.GetNight().busSpawnTimer + _nightIntroManager.GetNight().nightTimer);
-        // Set the Bus Deaprt Timer for the night
-        _busLogic.SetDepartTimer(_nightIntroManager.GetNight().busDepartTimer);
     }
 
     private void Border_OnBorderHit()

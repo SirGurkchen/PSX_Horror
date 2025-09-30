@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f65d2482c236714b97fa4b52a7822a7, type: 3}
-  m_Name: Night2
+  m_Name: Night3
   m_EditorClassIdentifier: 
-  nightNumber: 2
-  nightText: I have to wait for the bus again.
-  nightTimer: 3
-  busSpawnTimer: 3
+  nightNumber: 3
+  nightText: Here again. I should pick up the trash to pass the time.
+  nightTimer: 2
+  busSpawnTimer: 5
   busDepartTimer: 5
-  moonBlockerOffset: 5
+  moonBlockerOffset: 3

@@ -8,7 +8,12 @@ public class BusDoor : MonoBehaviour, IInteract
 
     public void Interact(Player player)
     {
-        _camManager.SwitchToBusCam();
+        if (player.PlayerIsStanding())
+        {
+            player.SetInBus();
+            HideOutline();
+            _camManager.SwitchToBusCam();
+        }
     }
 
     public void ShowOutline()

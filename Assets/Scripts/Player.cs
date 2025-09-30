@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask _interactMask;
     [SerializeField] private Transform _holdPoint;
 
-    private enum State { Walking, Running, Standing };
+    private enum State { Walking, Running, Standing, InBus };
     private State _currentState;
     private GameObject _lookInteractable;
     private GameObject _previousInteractable;
@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
     {
         SetPlayerMoveState();
         HandleWalkingAudio();
-        HandleInteractOutline();
         HandleInteract();
+        HandleInteractOutline();
     }
 
     private void SetPlayerMoveState()
@@ -43,7 +43,10 @@ public class Player : MonoBehaviour
         }
         else
         {
-            _currentState = State.Standing;
+            if (_currentState != State.InBus)
+            {
+                _currentState = State.Standing;
+            }
         }
     }
 
@@ -58,24 +61,27 @@ public class Player : MonoBehaviour
 
     private void HandleInteractOutline()
     {
-        _previousInteractable = _lookInteractable;
-        _lookInteractable = null;
-
-        if (Physics.Raycast(_playerCam.transform.position, _playerCam.transform.forward, out RaycastHit hit, _interactDistance, _interactMask))
+        if (_currentState != State.InBus)
         {
-            _lookInteractable = hit.collider.gameObject;
-        }
+            _previousInteractable = _lookInteractable;
+            _lookInteractable = null;
 
-        if (_previousInteractable != _lookInteractable)
-        {
-            if (_previousInteractable != null && _previousInteractable.TryGetComponent<IInteract>(out IInteract previousInteract))
+            if (Physics.Raycast(_playerCam.transform.position, _playerCam.transform.forward, out RaycastHit hit, _interactDistance, _interactMask))
             {
-                previousInteract.HideOutline();
+                _lookInteractable = hit.collider.gameObject;
             }
 
-            if (_lookInteractable != null && _lookInteractable.TryGetComponent<IInteract>(out IInteract currentInteract))
+            if (_previousInteractable != _lookInteractable)
             {
-                currentInteract.ShowOutline();
+                if (_previousInteractable != null && _previousInteractable.TryGetComponent<IInteract>(out IInteract previousInteract))
+                {
+                    previousInteract.HideOutline();
+                }
+
+                if (_lookInteractable != null && _lookInteractable.TryGetComponent<IInteract>(out IInteract currentInteract))
+                {
+                    currentInteract.ShowOutline();
+                }
             }
         }
     }
@@ -122,5 +128,15 @@ public class Player : MonoBehaviour
     public GameObject GetHeldObject()
     {
         return _heldObject;
+    }
+
+    public void SetInBus()
+    {
+        _currentState = State.InBus;
+    }
+    
+    public bool PlayerIsStanding()
+    {
+        return _currentState == State.Standing;
     }
 }

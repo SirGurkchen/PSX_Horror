@@ -1204,7 +1204,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -115}
+  m_AnchoredPosition: {x: 0, y: -81}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &353265263
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 0
+  m_TextWrappingMode: 2
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -1815,7 +1815,7 @@ Transform:
   m_GameObject: {fileID: 637394404}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.313, y: 0.1, z: -8.652}
+  m_LocalPosition: {x: -0.313, y: 0.85, z: -8.652}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7271,6 +7271,7 @@ MonoBehaviour:
   _nightSOs:
   - {fileID: 11400000, guid: 94d7d91076c991549a4f4f75a3cd8a22, type: 2}
   - {fileID: 11400000, guid: 1348c1c5382265f49b215127d36753b7, type: 2}
+  - {fileID: 11400000, guid: 882c1ddb04f4f644c84f743dcc92cf0e, type: 2}
   _nightManager: {fileID: 1299341541}
   _uiManager: {fileID: 850531527}
 --- !u!4 &791084856
@@ -18398,8 +18399,13 @@ MonoBehaviour:
   _uiManager: {fileID: 850531527}
   _textTimer: 3
   _moonBlocker: {fileID: 898878425}
-  _playerObject: {fileID: 1061391806}
+  _player: {fileID: 1440114994}
   _playerStartPos: {fileID: 637394405}
+  _canTrash: {fileID: 647392298}
+  _busSpawner: {fileID: 168990471}
+  _busLogic: {fileID: 539284678}
+  _nightIntroManager: {fileID: 791084855}
+  _trashCanLogic: {fileID: 940959635}
 --- !u!4 &1299341542
 Transform:
   m_ObjectHideFlags: 0
@@ -23386,7 +23392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384741, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_Constraints
-      value: 112
+      value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384741, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_IsKinematic
