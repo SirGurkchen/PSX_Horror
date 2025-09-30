@@ -8,6 +8,7 @@ TagManager:
   - Bus
   - BusStopper
   - BusDestroyer
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - Bus
   - BusDoor
-  - 
-  - 
+  - Interact
+  - Player
   - 
   - 
   - 

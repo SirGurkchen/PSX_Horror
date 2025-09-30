@@ -1,5 +1,6 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
 {
@@ -9,11 +10,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Camera _playerCam;
     [SerializeField] private float _interactDistance = 1.5f;
     [SerializeField] private LayerMask _interactMask;
+    [SerializeField] private Transform _holdPoint;
 
     private enum State { Walking, Running, Standing };
     private State _currentState;
     private GameObject _lookInteractable;
     private GameObject _previousInteractable;
+    private GameObject _heldObject = null;
 
     private void Start()
     {
@@ -95,5 +98,29 @@ public class Player : MonoBehaviour
                 interactable.Interact(this);
             }
         }
+    }
+
+    public void HoldObject(GameObject newObject)
+    {
+        if (_heldObject == null)
+        {
+            _heldObject = newObject;
+
+            if (_heldObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
+            {
+                rb.isKinematic = true;
+                rb.detectCollisions = false;
+            }
+
+            _heldObject.transform.SetParent(_holdPoint);
+
+            _heldObject.transform.localPosition = Vector3.zero;
+            _heldObject.transform.localRotation = Quaternion.Euler(180, 0, 0);
+        }
+    }
+
+    public GameObject GetHeldObject()
+    {
+        return _heldObject;
     }
 }

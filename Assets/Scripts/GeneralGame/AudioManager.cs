@@ -10,6 +10,7 @@ public class Sound
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource _walkingAudioSource;
+    [SerializeField] private AudioSource _soundsSource;
     [SerializeField] private List<Sound> _sounds;
 
     private Dictionary<SoundType, AudioClip> _soundDic;
@@ -17,7 +18,9 @@ public class AudioManager : MonoBehaviour
     public enum SoundType
     {
         Walking,
-        Running
+        Running,
+        Trash,
+        Pick
     }
 
     private void Awake()
@@ -70,5 +73,10 @@ public class AudioManager : MonoBehaviour
     public void DisableWalkingAudio()
     {
         _walkingAudioSource.Stop();
+    }
+
+    public void PlaySound(SoundType sound)
+    {
+        _soundsSource.PlayOneShot(_soundDic[sound]);
     }
 }
