@@ -4,11 +4,21 @@ public class CanLogic : MonoBehaviour, IInteract
 {
     [SerializeField] private GameObject _outlineCan;
     [SerializeField] private AudioManager _audioManager;
+    [SerializeField] private bool _isBranchBreaking;
 
     public void Interact(Player player)
     {
         _audioManager.PlaySound(AudioManager.SoundType.Pick);
         player.HoldObject(this.gameObject);
+        if (_isBranchBreaking )
+        {
+            Invoke("PlayBranch", 2f);
+        }
+    }
+
+    private void PlayBranch()
+    {
+        _audioManager.PlayBreakSound();
     }
 
     public void ShowOutline()
