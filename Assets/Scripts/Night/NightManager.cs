@@ -14,6 +14,8 @@ public class NightManager : MonoBehaviour
     [SerializeField] private BusLogic _busLogic;
     [SerializeField] private NightIntroManager _nightIntroManager;
     [SerializeField] private TrashCanLogic _trashCanLogic;
+    [SerializeField] private AudioManager _audioManager;
+    [SerializeField] private MonsterSpawner _monsterSpawner;
 
     private void Start()
     {
@@ -23,6 +25,7 @@ public class NightManager : MonoBehaviour
     public void ChooseNight(NightSO night)
     {
         ResetPlayerPosition();
+        _player.SetAlive();
 
         switch (night.nightNumber)
         {
@@ -35,6 +38,9 @@ public class NightManager : MonoBehaviour
             case 3:
                 PlayNightThree(night);
                 break;
+            case 4:
+                PlayNightFour(night);
+                break;
         }
     }
 
@@ -42,6 +48,7 @@ public class NightManager : MonoBehaviour
     {
         SpawnBus();
         StartCoroutine(ShowNightText(night));
+        StartCoroutine(SpawnMonster(night));
     }
 
     private void PlayNightTwo(NightSO night)
@@ -58,6 +65,14 @@ public class NightManager : MonoBehaviour
         StartCoroutine(ShowNightText(night));
     }
 
+    private void PlayNightFour(NightSO night)
+    {
+        MoveEarthObject(night.moonBlockerOffset);
+        SpawnBus();
+        StartCoroutine(ShowNightText(night));
+        StartCoroutine(SpawnMonster(night));
+    }
+
     private void _trashCanLogic_OnAllTrashCollected()
     {
         SpawnBus();
@@ -70,6 +85,16 @@ public class NightManager : MonoBehaviour
         yield return new WaitForSeconds(_textTimer);
 
         _uiManager.HideBusText();
+    }
+
+    private IEnumerator SpawnMonster(NightSO night)
+    {
+        if (night.monsterSpawnPoint != null)
+        {
+            yield return new WaitForSeconds(night.monsterSpawnTime);
+
+            _monsterSpawner.SpawnMonster(night.monsterSpawnPoint);
+        }
     }
 
     private void MoveEarthObject(float offset)
@@ -98,5 +123,10 @@ public class NightManager : MonoBehaviour
     {
         _busSpawner.StartNight(_nightIntroManager.GetNight().busSpawnTimer + _nightIntroManager.GetNight().nightTimer);
         _busLogic.SetDepartTimer(_nightIntroManager.GetNight().busDepartTimer);
+    }
+
+    public void ChangeWindState()
+    {
+        _audioManager.ChangeWind();
     }
 }

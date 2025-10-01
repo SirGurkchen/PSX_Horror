@@ -11,8 +11,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float _interactDistance = 1.5f;
     [SerializeField] private LayerMask _interactMask;
     [SerializeField] private Transform _holdPoint;
+    [SerializeField] private BusLogic _busLogic;
 
-    private enum State { Walking, Running, Standing, InBus };
+    private enum State { Walking, Running, Standing, InBus, Dead };
     private State _currentState;
     private GameObject _lookInteractable;
     private GameObject _previousInteractable;
@@ -21,6 +22,13 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _currentState = State.Standing;
+
+        _busLogic.OnPlayerHit += _busLogic_OnPlayerHit;
+    }
+
+    private void _busLogic_OnPlayerHit()
+    {
+        SetDead();
     }
 
     private void Update()
@@ -33,6 +41,11 @@ public class Player : MonoBehaviour
 
     private void SetPlayerMoveState()
     {
+        if (_currentState == State.Dead)
+        {
+            return;
+        }
+
         if (_fpController.isSprinting)
         {
             _currentState = State.Running;
@@ -52,6 +65,12 @@ public class Player : MonoBehaviour
 
     private void HandleWalkingAudio()
     {
+        if (_currentState == State.Dead)
+        {
+            _audioManager.DisableWalkingAudio();
+            return;
+        }
+
         bool isMoving = _fpController.isWalking || _fpController.isSprinting;
         bool isWalking = _currentState == State.Walking && isMoving;
         bool isRunning = _currentState == State.Running && isMoving;
@@ -125,6 +144,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        _busLogic.OnPlayerHit -= _busLogic_OnPlayerHit;
+    }
+
     public GameObject GetHeldObject()
     {
         return _heldObject;
@@ -134,9 +158,19 @@ public class Player : MonoBehaviour
     {
         _currentState = State.InBus;
     }
+
+    private void SetDead()
+    {
+        _currentState = State.Dead;
+    }
     
     public bool PlayerIsStanding()
     {
         return _currentState == State.Standing;
+    }
+
+    public void SetAlive()
+    {
+        _currentState = State.Standing;
     }
 }

@@ -21,6 +21,7 @@ public class NightIntroManager : MonoBehaviour
     private void _busDestroyer_OnBusDestroy()
     {
         _uiManager.ShowBlackScreen();
+        _nightManager.ChangeWindState();
         Invoke("ShowNight", 2f);
     }
 
@@ -43,6 +44,7 @@ public class NightIntroManager : MonoBehaviour
     {
         _uiManager.DisableNightUI();
         Time.timeScale = 1f;
+        _nightManager.ChangeWindState();
     }
 
     private void StartNight(int nightNumber)

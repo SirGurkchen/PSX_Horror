@@ -8,11 +8,14 @@ public class CanLogic : MonoBehaviour, IInteract
 
     public void Interact(Player player)
     {
-        _audioManager.PlaySound(AudioManager.SoundType.Pick);
-        player.HoldObject(this.gameObject);
-        if (_isBranchBreaking )
+        if (player.GetHeldObject() == null)
         {
-            Invoke("PlayBranch", 2f);
+            _audioManager.PlaySound(AudioManager.SoundType.Pick);
+            player.HoldObject(this.gameObject);
+            if (_isBranchBreaking)
+            {
+                Invoke("PlayBranch", 2f);
+            }
         }
     }
 

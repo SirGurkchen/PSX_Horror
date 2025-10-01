@@ -12,10 +12,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource _walkingAudioSource;
     [SerializeField] private AudioSource _soundsSource;
     [SerializeField] private AudioSource _branchSource;
+    [SerializeField] private AudioSource _windSource;
     [SerializeField] private List<Sound> _sounds;
     [SerializeField] private AnimationCurve _volumeRolloff = AnimationCurve.Linear(0f, 1f, 1f, 0f);
 
     private Dictionary<SoundType, AudioClip> _soundDic;
+    private bool _isWindy = false;
 
     public enum SoundType
     {
@@ -23,7 +25,8 @@ public class AudioManager : MonoBehaviour
         Running,
         Trash,
         Pick,
-        Branch
+        Branch,
+        Wind
     }
 
     private void Awake()
@@ -32,6 +35,11 @@ public class AudioManager : MonoBehaviour
         {
             BuildDictionary();
         }
+    }
+
+    private void Start()
+    {
+        _windSource.clip = _soundDic[SoundType.Wind];
     }
 
     private void BuildDictionary()
@@ -96,5 +104,21 @@ public class AudioManager : MonoBehaviour
         _branchSource.spread = 45f;
 
         _branchSource.Play();
+    }
+
+    public void ChangeWind()
+    {
+        _isWindy = !_isWindy;
+
+        if (_isWindy)
+        {
+            _windSource.loop = true;
+            _windSource.Play();
+        }
+        else
+        {
+            _windSource.loop = false;
+            _windSource.Stop();
+        }
     }
 }

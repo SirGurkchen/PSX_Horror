@@ -34,6 +34,7 @@ public class GameLogic : MonoBehaviour
     private void _busLogic_OnPlayerHit()
     {
         _uiManager.ShowDeathScreen();
+        _audioManager.ChangeWind();
 
         // Deactivates Bus Object
         _busLogic.gameObject.SetActive(false);
@@ -43,6 +44,7 @@ public class GameLogic : MonoBehaviour
 
         // Disables Sprint Bar if player sprints while beind hit
         _uiManager.DisableSprintBar();
+
 
         Invoke("ReturnToMainMenu", 2f);
     }

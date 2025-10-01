@@ -9,4 +9,6 @@ public class NightSO : ScriptableObject
     public float busSpawnTimer;
     public float busDepartTimer;
     public float moonBlockerOffset;
+    public float monsterSpawnTime;
+    public GameObject monsterSpawnPoint;
 }
