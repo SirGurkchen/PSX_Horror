@@ -5,6 +5,7 @@ public class CanLogic : MonoBehaviour, IInteract
     [SerializeField] private GameObject _outlineCan;
     [SerializeField] private AudioManager _audioManager;
     [SerializeField] private bool _isBranchBreaking;
+    [SerializeField] private float _branchBreakTimer;
 
     public void Interact(Player player)
     {
@@ -14,7 +15,7 @@ public class CanLogic : MonoBehaviour, IInteract
             player.HoldObject(this.gameObject);
             if (_isBranchBreaking)
             {
-                Invoke("PlayBranch", 2f);
+                Invoke("PlayBranch", _branchBreakTimer);
             }
         }
     }

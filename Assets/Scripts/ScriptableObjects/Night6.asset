@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f65d2482c236714b97fa4b52a7822a7, type: 3}
-  m_Name: Night3
+  m_Name: Night6
   m_EditorClassIdentifier: 
-  nightNumber: 3
-  nightText: Here again. I should pick up the trash to pass the time.
+  nightNumber: 0
+  nightText: 
   nightTimer: 3
-  busSpawnTimer: 1
-  busDepartTimer: 5
-  moonBlockerOffset: 3
+  busSpawnTimer: 0
+  busDepartTimer: 0
+  moonBlockerOffset: 0
   monsterSpawnTime: 0
   monsterSpawnPoint: {fileID: 0}

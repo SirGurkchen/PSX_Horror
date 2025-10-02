@@ -7,6 +7,7 @@ public class NightManager : MonoBehaviour
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private float _textTimer;
     [SerializeField] private GameObject _moonBlocker;
+    [SerializeField] private GameObject _moon;
     [SerializeField] private Player _player;
     [SerializeField] private Transform _playerStartPos;
     [SerializeField] private GameObject _canTrash;
@@ -16,6 +17,9 @@ public class NightManager : MonoBehaviour
     [SerializeField] private TrashCanLogic _trashCanLogic;
     [SerializeField] private AudioManager _audioManager;
     [SerializeField] private MonsterSpawner _monsterSpawner;
+    [SerializeField] private ChaseMonsterSpawner _chaseSpawner;
+    [SerializeField] private GameObject _hangedPerson;
+    [SerializeField] private CreatureScript _creature;
 
     private void Start()
     {
@@ -40,6 +44,15 @@ public class NightManager : MonoBehaviour
                 break;
             case 4:
                 PlayNightFour(night);
+                break;
+            case 5:
+                PlayNightFive(night);
+                break;
+            case 6:
+                PlayNightSix(night);
+                break;
+            case 7:
+                PlayNightSeven(night);
                 break;
         }
     }
@@ -73,6 +86,26 @@ public class NightManager : MonoBehaviour
         StartCoroutine(SpawnMonster(night));
     }
 
+    private void PlayNightFive(NightSO night)
+    {
+        SpawnDeadPerson();
+        MoveEarthObject(night.moonBlockerOffset);
+        StartCoroutine(ShowNightText(night));
+        SpawnBus();
+    }
+
+    private void PlayNightSix(NightSO night)
+    {
+        ChangeMoonToRed();
+        StartCoroutine(ShowNightText(night));
+        SpawnBus();
+    }
+
+    private void PlayNightSeven(NightSO night)
+    {
+        StartCoroutine(ShowNightText(night));
+    }
+
     private void _trashCanLogic_OnAllTrashCollected()
     {
         SpawnBus();
@@ -94,6 +127,18 @@ public class NightManager : MonoBehaviour
             yield return new WaitForSeconds(night.monsterSpawnTime);
 
             _monsterSpawner.SpawnMonster(night.monsterSpawnPoint);
+        }
+    }
+
+    private IEnumerator SpawnChasingMonster(NightSO night)
+    {
+        if (night.monsterSpawnPoint != null)
+        {
+            yield return new WaitForSeconds(night.monsterSpawnTime);
+
+            _chaseSpawner.SpawnMonster(night.monsterSpawnPoint);
+
+            _creature.StartChase();
         }
     }
 
@@ -123,6 +168,20 @@ public class NightManager : MonoBehaviour
     {
         _busSpawner.StartNight(_nightIntroManager.GetNight().busSpawnTimer + _nightIntroManager.GetNight().nightTimer);
         _busLogic.SetDepartTimer(_nightIntroManager.GetNight().busDepartTimer);
+    }
+
+    private void SpawnDeadPerson()
+    {
+        _hangedPerson.SetActive(true);
+    }
+
+    private void ChangeMoonToRed()
+    {
+        Renderer rend = _moon.GetComponent<Renderer>();
+
+        rend.material.EnableKeyword("_EMISSION");
+
+        rend.material.SetColor("_EmissionColor", Color.red);
     }
 
     public void ChangeWindState()

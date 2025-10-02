@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource _soundsSource;
     [SerializeField] private AudioSource _branchSource;
     [SerializeField] private AudioSource _windSource;
+    [SerializeField] private AudioSource _screamSource;
     [SerializeField] private List<Sound> _sounds;
     [SerializeField] private AnimationCurve _volumeRolloff = AnimationCurve.Linear(0f, 1f, 1f, 0f);
 
@@ -26,7 +27,9 @@ public class AudioManager : MonoBehaviour
         Trash,
         Pick,
         Branch,
-        Wind
+        Wind,
+        Scream,
+        Whispers
     }
 
     private void Awake()
@@ -104,6 +107,21 @@ public class AudioManager : MonoBehaviour
         _branchSource.spread = 45f;
 
         _branchSource.Play();
+    }
+
+    public void PlayScream()
+    {
+        _screamSource.clip = _soundDic[SoundType.Scream];
+        _screamSource.loop = false;
+        _screamSource.playOnAwake = false;
+        _screamSource.spatialBlend = 1f;
+        _screamSource.rolloffMode = AudioRolloffMode.Custom;
+        _screamSource.SetCustomCurve(AudioSourceCurveType.CustomRolloff, _volumeRolloff);
+        _screamSource.maxDistance = 100f;
+        _screamSource.minDistance = 1f;
+        _screamSource.spread = 50f;
+
+        _screamSource.Play();
     }
 
     public void ChangeWind()
