@@ -13,6 +13,8 @@ public class GameLogic : MonoBehaviour
     [SerializeField] private AudioManager _audioManager;
     [SerializeField] private const float returnTextTimer = 2f;
 
+    private int _busDepartCounter = 0;
+
     private void Start()
     {
         // Acces Player Borders
@@ -56,7 +58,13 @@ public class GameLogic : MonoBehaviour
 
     private void _busDestroyer_OnBusDestroy()
     {
+        _busDepartCounter++;
         CameraManager.Instance.SwitchToPlayerCam();
+
+        if (_busDepartCounter >= 7)
+        {
+            Invoke("ReturnToMainMenu", 1f);
+        }
     }
 
     private void Border_OnBorderHit()
