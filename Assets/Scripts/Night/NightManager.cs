@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class NightManager : MonoBehaviour
 {
-    [SerializeField] private NightIntroManager _intro;
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private float _textTimer;
     [SerializeField] private GameObject _moonBlocker;
@@ -61,7 +60,6 @@ public class NightManager : MonoBehaviour
     {
         SpawnBus();
         StartCoroutine(ShowNightText(night));
-        StartCoroutine(SpawnMonster(night));
     }
 
     private void PlayNightTwo(NightSO night)
@@ -90,20 +88,22 @@ public class NightManager : MonoBehaviour
     {
         SpawnDeadPerson();
         MoveEarthObject(night.moonBlockerOffset);
-        StartCoroutine(ShowNightText(night));
         SpawnBus();
+        StartCoroutine(ShowNightText(night));
     }
 
     private void PlayNightSix(NightSO night)
     {
         ChangeMoonToRed();
-        StartCoroutine(ShowNightText(night));
         SpawnBus();
+        StartCoroutine(ShowNightText(night));
     }
 
     private void PlayNightSeven(NightSO night)
     {
+        SpawnBus();
         StartCoroutine(ShowNightText(night));
+        StartCoroutine(SpawnChasingMonster(night));
     }
 
     private void _trashCanLogic_OnAllTrashCollected()

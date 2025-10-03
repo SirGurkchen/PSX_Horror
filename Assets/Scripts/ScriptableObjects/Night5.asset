@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f65d2482c236714b97fa4b52a7822a7, type: 3}
   m_Name: Night5
   m_EditorClassIdentifier: 
-  nightNumber: 0
+  nightNumber: 5
   nightText: 
   nightTimer: 5
   busSpawnTimer: 1
-  busDepartTimer: 0
-  moonBlockerOffset: 0
+  busDepartTimer: 5
+  moonBlockerOffset: 3
   monsterSpawnTime: 0
   monsterSpawnPoint: {fileID: 0}
