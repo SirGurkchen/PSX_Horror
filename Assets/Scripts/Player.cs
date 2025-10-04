@@ -1,9 +1,12 @@
+using System;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
 {
+    public event Action OnPlayerHit;
+
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private FirstPersonController _fpController;
     [SerializeField] private AudioManager _audioManager;
@@ -141,6 +144,14 @@ public class Player : MonoBehaviour
 
             _heldObject.transform.localPosition = Vector3.zero;
             _heldObject.transform.localRotation = Quaternion.Euler(180, 0, 0);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Creature"))
+        {
+            OnPlayerHit?.Invoke();
         }
     }
 

@@ -11,6 +11,7 @@ public class GameLogic : MonoBehaviour
     [SerializeField] private BusLogic _busLogic;
     [SerializeField] private BusDestroyer _busDestroyer;
     [SerializeField] private AudioManager _audioManager;
+    [SerializeField] private Player _player;
     [SerializeField] private const float returnTextTimer = 2f;
 
     private int _busDepartCounter = 0;
@@ -29,24 +30,32 @@ public class GameLogic : MonoBehaviour
         // Event if Bus reaches the end of the Street
         _busDestroyer.OnBusDestroy += _busDestroyer_OnBusDestroy;
 
-        // Event if the BUs hits the Player
+        // Event if the Bus hits the Player
         _busLogic.OnPlayerHit += _busLogic_OnPlayerHit;
+
+        _player.OnPlayerHit += _player_OnPlayerHit;
+    }
+
+    private void _player_OnPlayerHit()
+    {
+        PlayerDead();
     }
 
     private void _busLogic_OnPlayerHit()
     {
+        PlayerDead();
+    }
+
+    private void PlayerDead()
+    {
         _uiManager.ShowDeathScreen();
         _audioManager.ChangeWind();
 
-        // Deactivates Bus Object
         _busLogic.gameObject.SetActive(false);
 
-        // Disables Walking Audio of Player (Needed if the player walks/runs while being hit)
         _audioManager.DisableWalkingAudio();
 
-        // Disables Sprint Bar if player sprints while beind hit
         _uiManager.DisableSprintBar();
-
 
         Invoke("ReturnToMainMenu", 2f);
     }
@@ -88,5 +97,9 @@ public class GameLogic : MonoBehaviour
             border.OnBorderHit -= Border_OnBorderHit;
         }
         _busLogic.OnPlayerHit -= _busLogic_OnPlayerHit;
+
+        _busDestroyer.OnBusDestroy -= _busDestroyer_OnBusDestroy;
+
+        _player.OnPlayerHit -= _player_OnPlayerHit;
     }
 }

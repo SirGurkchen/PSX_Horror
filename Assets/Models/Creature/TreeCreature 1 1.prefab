@@ -1462,6 +1462,8 @@ SkinnedMeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1483,6 +1485,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -1672,9 +1675,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5160934765149484294}
   - component: {fileID: 3414983127918039313}
+  - component: {fileID: 2642739598938398149}
   m_Layer: 0
   m_Name: TreeCreature 1 1
-  m_TagString: Untagged
+  m_TagString: Creature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1711,9 +1715,29 @@ MonoBehaviour:
   _player: {fileID: 0}
   _neck: {fileID: 6264622302448701066}
   _rotationOffset: {x: 0, y: 90, z: 110}
-  playerPos: {fileID: 0}
   _moveSpeed: 0
   _rb: {fileID: 0}
+--- !u!65 &2642739598938398149
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962091428044269236}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.75, y: 6, z: 1}
+  m_Center: {x: -0.5, y: -2, z: 0}
 --- !u!1 &7991039988751005087
 GameObject:
   m_ObjectHideFlags: 0

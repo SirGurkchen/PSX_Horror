@@ -7327,6 +7327,7 @@ MonoBehaviour:
   _busLogic: {fileID: 539284678}
   _busDestroyer: {fileID: 977710142}
   _audioManager: {fileID: 180634062}
+  _player: {fileID: 1440114994}
 --- !u!4 &709640220
 Transform:
   m_ObjectHideFlags: 0

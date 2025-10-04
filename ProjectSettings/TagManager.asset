@@ -9,6 +9,7 @@ TagManager:
   - BusStopper
   - BusDestroyer
   - Interactable
+  - Creature
   layers:
   - Default
   - TransparentFX
