@@ -3,7 +3,7 @@ using UnityEngine;
 public class LandscapeLogic : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
-    [SerializeField] private const float _despawnX = -200f;
+    [SerializeField] private const float _despawnX = -250f;
 
     private Vector3 move;
 

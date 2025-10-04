@@ -4,10 +4,12 @@ using UnityEngine.SceneManagement;
 public class StartMenuLogic : MonoBehaviour
 {
     [SerializeField] private StartMenuLandscapeSpawner _spawner;
+    [SerializeField] private MainMenuAudioManager _audioManager;
 
     private void Start()
     {
         StartCoroutine(_spawner.SpawnLandscape());
+        _audioManager.PlayMusic();
     }
 
     private void OnEnable()
