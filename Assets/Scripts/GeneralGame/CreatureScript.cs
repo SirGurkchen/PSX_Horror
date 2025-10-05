@@ -8,6 +8,11 @@ public class CreatureScript : MonoBehaviour
     [SerializeField] private Vector3 _rotationOffset = new Vector3(-90, 0, 0);
     [SerializeField] private float _moveSpeed;
     [SerializeField] private Rigidbody _rb;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioClip;
+    [SerializeField] private AnimationCurve _volumeRolloff = AnimationCurve.Linear(0f, 1f, 1f, 0f);
+    [SerializeField] private float _maxAudioDistance = 50f;
+
 
     private bool _isChasing = false;
 
@@ -47,5 +52,26 @@ public class CreatureScript : MonoBehaviour
     public void StartChase()
     {
         _isChasing = true;
+        StartSound();
+    }
+
+    private void StartSound()
+    {
+        _audioSource.clip = _audioClip;
+        _audioSource.loop = true;
+        _audioSource.playOnAwake = false;
+        _audioSource.spatialBlend = 1f;
+        _audioSource.rolloffMode = AudioRolloffMode.Custom;
+        _audioSource.SetCustomCurve(AudioSourceCurveType.CustomRolloff, _volumeRolloff);
+        _audioSource.maxDistance = _maxAudioDistance;
+        _audioSource.minDistance = 1f;
+        _audioSource.spread = 45f;
+
+        _audioSource.Play();
+    }
+
+    public void StopSound()
+    {
+        _audioSource.Stop();
     }
 }

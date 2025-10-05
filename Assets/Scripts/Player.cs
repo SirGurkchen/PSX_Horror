@@ -151,6 +151,10 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Creature"))
         {
+            if (other.gameObject.TryGetComponent<CreatureScript>(out CreatureScript creatureScript))
+            {
+                creatureScript.StopSound();
+            }
             OnPlayerHit?.Invoke();
         }
     }
