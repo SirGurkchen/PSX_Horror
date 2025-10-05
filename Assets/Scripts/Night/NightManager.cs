@@ -58,7 +58,7 @@ public class NightManager : MonoBehaviour
 
     private void PlayNightOne(NightSO night)
     {
-        StartCoroutine(SpawnChasingMonster(night));
+        SpawnBus();
         StartCoroutine(ShowNightText(night));
     }
 
@@ -78,8 +78,10 @@ public class NightManager : MonoBehaviour
 
     private void PlayNightFour(NightSO night)
     {
+        DespawnMonster();
         MoveEarthObject(night.moonBlockerOffset);
         SpawnBus();
+        Invoke("PlayScream", 3f);
         StartCoroutine(ShowNightText(night));
         StartCoroutine(SpawnMonster(night));
     }
@@ -184,8 +186,18 @@ public class NightManager : MonoBehaviour
         rend.material.SetColor("_EmissionColor", Color.red);
     }
 
+    private void PlayScream()
+    {
+        _audioManager.PlayScream();
+    }
+
     public void ChangeWindState()
     {
         _audioManager.ChangeWind();
+    }
+
+    private void DespawnMonster()
+    {
+        _monsterSpawner.gameObject.SetActive(false);
     }
 }

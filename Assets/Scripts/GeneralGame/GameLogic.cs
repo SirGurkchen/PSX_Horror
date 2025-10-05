@@ -33,7 +33,7 @@ public class GameLogic : MonoBehaviour
         // Event if the Bus hits the Player
         _busLogic.OnPlayerHit += _busLogic_OnPlayerHit;
 
-        _player.OnPlayerHit += _player_OnPlayerHit;
+        _player.OnPlayerHitMonster += _player_OnPlayerHit;
     }
 
     private void _player_OnPlayerHit()
@@ -100,6 +100,6 @@ public class GameLogic : MonoBehaviour
 
         _busDestroyer.OnBusDestroy -= _busDestroyer_OnBusDestroy;
 
-        _player.OnPlayerHit -= _player_OnPlayerHit;
+        _player.OnPlayerHitMonster -= _player_OnPlayerHit;
     }
 }

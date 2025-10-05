@@ -15,8 +15,8 @@ MonoBehaviour:
   nightNumber: 4
   nightText: Another night, another wait.
   nightTimer: 5
-  busSpawnTimer: 5
+  busSpawnTimer: 8
   busDepartTimer: 5
   moonBlockerOffset: 3
-  monsterSpawnTime: 2
+  monsterSpawnTime: 5
   monsterSpawnPoint: {fileID: 1492099825172421320, guid: 8471d2a58631d3246a2806bde5690e35, type: 3}

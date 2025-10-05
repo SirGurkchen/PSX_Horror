@@ -5,7 +5,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
 {
-    public event Action OnPlayerHit;
+    public event Action OnPlayerHitMonster;
 
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private FirstPersonController _fpController;
@@ -155,7 +155,8 @@ public class Player : MonoBehaviour
             {
                 creatureScript.StopSound();
             }
-            OnPlayerHit?.Invoke();
+            SetDead();
+            OnPlayerHitMonster?.Invoke();
         }
     }
 
