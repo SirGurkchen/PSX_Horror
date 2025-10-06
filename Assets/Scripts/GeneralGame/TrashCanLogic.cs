@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TrashCanLogic : MonoBehaviour, IInteract
@@ -9,6 +11,8 @@ public class TrashCanLogic : MonoBehaviour, IInteract
     [SerializeField] private GameObject _outlineTrash;
     [SerializeField] private AudioManager _audioManager;
     [SerializeField] private Player _player;
+    [SerializeField] private TextMeshProUGUI _leftText;
+    [SerializeField] private float _textLength = 1.5f;
 
     private CanLogic[] _cans;
     private List<CanLogic> _canList;
@@ -51,9 +55,23 @@ public class TrashCanLogic : MonoBehaviour, IInteract
     private void RemoveCan(CanLogic can)
     {
         _canList.Remove(can);
+
         if (_canList.Count <= 0)
         {
             OnAllTrashCollected?.Invoke();
         }
+        else
+        {
+            StartCoroutine(ShowLeftText(_canList.Count));
+        }
+    }
+
+    private IEnumerator ShowLeftText(int left)
+    {
+        _leftText.text = left + " left...";
+
+        yield return new WaitForSeconds(_textLength);
+
+        _leftText.text = String.Empty;
     }
 }

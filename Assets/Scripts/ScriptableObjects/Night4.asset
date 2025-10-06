@@ -18,5 +18,5 @@ MonoBehaviour:
   busSpawnTimer: 10
   busDepartTimer: 5
   moonBlockerOffset: 3
-  monsterSpawnTime: 5
+  monsterSpawnTime: 8
   monsterSpawnPoint: {fileID: 1492099825172421320, guid: 8471d2a58631d3246a2806bde5690e35, type: 3}

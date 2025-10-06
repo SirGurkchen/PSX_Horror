@@ -13,6 +13,7 @@ public class GameLogic : MonoBehaviour
     [SerializeField] private AudioManager _audioManager;
     [SerializeField] private Player _player;
     [SerializeField] private const float returnTextTimer = 2f;
+    [SerializeField] private CreatureScript _creatureScript;
 
     private int _busDepartCounter = 0;
 
@@ -54,6 +55,8 @@ public class GameLogic : MonoBehaviour
         _busLogic.gameObject.SetActive(false);
 
         _audioManager.DisableWalkingAudio();
+
+        _creatureScript.StopSound();
 
         _uiManager.DisableSprintBar();
 
