@@ -5,6 +5,7 @@ public class StartMenuLogic : MonoBehaviour
 {
     [SerializeField] private StartMenuLandscapeSpawner _spawner;
     [SerializeField] private MainMenuAudioManager _audioManager;
+    [SerializeField] private StartMenuUIManager _UIManager;
 
     private void Start()
     {
@@ -26,5 +27,15 @@ public class StartMenuLogic : MonoBehaviour
     {
         LoadingSceneLogic.nextScene = "GameScene";
         SceneManager.LoadScene("LoadingScreenScene");
+    }
+
+    public void ShowControls()
+    {
+        _UIManager.SetControlsActive();
+    }
+
+    public void HideControls()
+    {
+        _UIManager.SetControlsDisabled();
     }
 }

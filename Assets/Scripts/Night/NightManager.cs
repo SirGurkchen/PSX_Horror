@@ -58,7 +58,8 @@ public class NightManager : MonoBehaviour
 
     private void PlayNightOne(NightSO night)
     {
-        SpawnBus();
+        StartCoroutine(SpawnMonster(night));
+        //SpawnBus();
         StartCoroutine(ShowNightText(night));
     }
 
