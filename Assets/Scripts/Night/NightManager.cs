@@ -78,7 +78,6 @@ public class NightManager : MonoBehaviour
 
     private void PlayNightFour(NightSO night)
     {
-        DespawnMonster();
         MoveEarthObject(night.moonBlockerOffset);
         SpawnBus();
         Invoke("PlayScream", 3f);
@@ -88,6 +87,7 @@ public class NightManager : MonoBehaviour
 
     private void PlayNightFive(NightSO night)
     {
+        DespawnMonster();
         SpawnDeadPerson();
         MoveEarthObject(night.moonBlockerOffset);
         SpawnBus();
