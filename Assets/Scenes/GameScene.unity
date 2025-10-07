@@ -2264,7 +2264,7 @@ MonoBehaviour:
   _rb: {fileID: 539284670}
   _destroyer: {fileID: 977710142}
   _busWaitTime: 1
-  _drivingSpeed: 40
+  _drivingSpeed: 15
 --- !u!1 &637394404
 GameObject:
   m_ObjectHideFlags: 0
@@ -7656,9 +7656,15 @@ MonoBehaviour:
   _busSpawner: {fileID: 168990471}
   _busLogic: {fileID: 539284678}
   _busDestroyer: {fileID: 977710142}
+  _busDoor:
+  - {fileID: 222564069}
+  - {fileID: 1984303844}
+  - {fileID: 1968012124}
+  - {fileID: 706223264}
   _audioManager: {fileID: 180634062}
   _player: {fileID: 1440114994}
   _creatureScript: {fileID: 81606218}
+  _nightManager: {fileID: 1299341541}
 --- !u!4 &709640220
 Transform:
   m_ObjectHideFlags: 0

@@ -15,6 +15,8 @@ MonoBehaviour:
   nightNumber: 2
   nightText: I have to wait for the bus again.
   nightTimer: 3
-  busSpawnTimer: 3
+  busSpawnTimer: 15
   busDepartTimer: 5
   moonBlockerOffset: 5
+  monsterSpawnTime: 0
+  monsterSpawnPoint: {fileID: 0}

@@ -15,7 +15,7 @@ MonoBehaviour:
   nightNumber: 4
   nightText: Another night, another wait.
   nightTimer: 5
-  busSpawnTimer: 10
+  busSpawnTimer: 20
   busDepartTimer: 5
   moonBlockerOffset: 3
   monsterSpawnTime: 8

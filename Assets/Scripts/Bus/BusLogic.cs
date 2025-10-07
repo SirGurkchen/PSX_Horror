@@ -30,7 +30,6 @@ public class BusLogic : MonoBehaviour
         _destroyer.OnBusDestroy += _destroyer_OnBusDestroy;
     }
 
-
     private void _destroyer_OnBusDestroy()
     {
         DespawnBus();

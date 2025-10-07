@@ -12,13 +12,15 @@ public class MenuSound
 public class MainMenuAudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource _menuMusicSource;
+    [SerializeField] private AudioSource _clickSource;
     [SerializeField] private List<MenuSound> _menuSounds;
 
     private Dictionary<MenuSoundType, AudioClip> _menuSoundDic;
 
     public enum MenuSoundType
     {
-        Music
+        Music,
+        Click
     }
 
     private void Awake()
@@ -43,5 +45,10 @@ public class MainMenuAudioManager : MonoBehaviour
         _menuMusicSource.clip = _menuSoundDic[MenuSoundType.Music];
         _menuMusicSource.loop = true;
         _menuMusicSource.Play();
+    }
+
+    public void PlayClick()
+    {
+        _clickSource.PlayOneShot(_menuSoundDic[MenuSoundType.Click]);
     }
 }

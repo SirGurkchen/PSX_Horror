@@ -15,7 +15,7 @@ MonoBehaviour:
   nightNumber: 3
   nightText: Here again. I should pick up the trash to pass the time.
   nightTimer: 3
-  busSpawnTimer: 1
+  busSpawnTimer: 2
   busDepartTimer: 5
   moonBlockerOffset: 3
   monsterSpawnTime: 0

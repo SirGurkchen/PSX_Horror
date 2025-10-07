@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BusDoor : MonoBehaviour, IInteract
 {
+    public event Action OnBusEnter;
+
     [SerializeField] private GameObject _outlineDoor;
     [SerializeField] private CameraManager _camManager;
 
@@ -13,6 +16,7 @@ public class BusDoor : MonoBehaviour, IInteract
             player.SetInBus();
             HideOutline();
             _camManager.SwitchToBusCam();
+            OnBusEnter?.Invoke();
         }
     }
 

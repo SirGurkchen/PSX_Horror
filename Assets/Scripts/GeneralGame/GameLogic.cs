@@ -10,12 +10,15 @@ public class GameLogic : MonoBehaviour
     [SerializeField] private BusSpawner _busSpawner;
     [SerializeField] private BusLogic _busLogic;
     [SerializeField] private BusDestroyer _busDestroyer;
+    [SerializeField] private BusDoor[] _busDoor;
     [SerializeField] private AudioManager _audioManager;
     [SerializeField] private Player _player;
     [SerializeField] private const float returnTextTimer = 2f;
     [SerializeField] private CreatureScript _creatureScript;
+    [SerializeField] private NightManager _nightManager;
 
     private int _busDepartCounter = 0;
+    private bool _enteredBus = false;
 
     private void Start()
     {
@@ -35,6 +38,28 @@ public class GameLogic : MonoBehaviour
         _busLogic.OnPlayerHit += _busLogic_OnPlayerHit;
 
         _player.OnPlayerHitMonster += _player_OnPlayerHit;
+
+        foreach (BusDoor door in _busDoor)
+        {
+            door.OnBusEnter += _busDoor_OnBusEnter;
+        }
+
+        _nightManager.OnNewNight += _nightManager_OnNewNight;
+    }
+
+    private void _nightManager_OnNewNight()
+    {
+        _enteredBus = false;
+    }
+
+    private void _busDoor_OnBusEnter()
+    {
+        _enteredBus = true;
+
+        if (_busDepartCounter >= 6)
+        {
+            _creatureScript.gameObject.SetActive(false);
+        }
     }
 
     private void _player_OnPlayerHit()
@@ -73,7 +98,7 @@ public class GameLogic : MonoBehaviour
         _busDepartCounter++;
         CameraManager.Instance.SwitchToPlayerCam();
 
-        if (_busDepartCounter >= 7)
+        if (_busDepartCounter >= 7 || !_enteredBus)
         {
             Invoke("ReturnToMainMenu", 1f);
         }
@@ -104,5 +129,11 @@ public class GameLogic : MonoBehaviour
         _busDestroyer.OnBusDestroy -= _busDestroyer_OnBusDestroy;
 
         _player.OnPlayerHitMonster -= _player_OnPlayerHit;
+
+        foreach (BusDoor door in _busDoor)
+        {
+            door.OnBusEnter -= _busDoor_OnBusEnter;
+        }
+        _nightManager.OnNewNight -= _nightManager_OnNewNight;
     }
 }

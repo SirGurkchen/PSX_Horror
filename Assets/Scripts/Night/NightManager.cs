@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class NightManager : MonoBehaviour
 {
+    public event Action OnNewNight;
+
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private float _textTimer;
     [SerializeField] private GameObject _moonBlocker;
@@ -29,6 +32,7 @@ public class NightManager : MonoBehaviour
     {
         ResetPlayerPosition();
         _player.SetAlive();
+        OnNewNight?.Invoke();
 
         switch (night.nightNumber)
         {
