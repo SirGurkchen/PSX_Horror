@@ -13,6 +13,7 @@ public class BusLogic : MonoBehaviour
 
     private RigidbodyConstraints _originalConstraints;
     private Vector3 _originalPosition;
+    private bool _playerInBus = false;
 
     private enum State
     {
@@ -61,11 +62,12 @@ public class BusLogic : MonoBehaviour
     {
         transform.position = _originalPosition;
         gameObject.SetActive(false);
+        _playerInBus = false;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_currentState == State.Driving && collision.gameObject.CompareTag("Player"))
+        if (_currentState == State.Driving && collision.gameObject.CompareTag("Player") && !_playerInBus)
         {
             OnPlayerHit?.Invoke();
         }
@@ -74,5 +76,10 @@ public class BusLogic : MonoBehaviour
     private void OnDestroy()
     {
         _destroyer.OnBusDestroy -= _destroyer_OnBusDestroy;
+    }
+
+    public void SetPlayerInBus()
+    {
+        _playerInBus = true;
     }
 }

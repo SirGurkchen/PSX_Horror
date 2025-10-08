@@ -22,7 +22,7 @@ public class GameLogic : MonoBehaviour
 
     private void Start()
     {
-        // Acces Player Borders
+        // Access Player Borders
         foreach (var border in _borderLogic)
         {
             border.OnBorderHit += Border_OnBorderHit;
@@ -55,6 +55,7 @@ public class GameLogic : MonoBehaviour
     private void _busDoor_OnBusEnter()
     {
         _enteredBus = true;
+        _busLogic.SetPlayerInBus();
 
         if (_busDepartCounter >= 6)
         {

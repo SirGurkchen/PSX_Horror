@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform _holdPoint;
     [SerializeField] private BusLogic _busLogic;
 
-    private enum State { Walking, Running, Standing, InBus, Dead };
+    public enum State { Walking, Running, Standing, InBus, Dead };
     private State _currentState;
     private GameObject _lookInteractable;
     private GameObject _previousInteractable;
@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
         HandleWalkingAudio();
         HandleInteract();
         HandleInteractOutline();
+        CheckCanMove();
     }
 
     private void SetPlayerMoveState()
@@ -63,6 +64,14 @@ public class Player : MonoBehaviour
             {
                 _currentState = State.Standing;
             }
+        }
+    }
+
+    private void CheckCanMove()
+    {
+        if (_currentState == State.InBus && _fpController.enabled == true)
+        {
+            _fpController.enabled = false;
         }
     }
 
@@ -188,5 +197,6 @@ public class Player : MonoBehaviour
     public void SetAlive()
     {
         _currentState = State.Standing;
+        _fpController.enabled = true;
     }
 }
