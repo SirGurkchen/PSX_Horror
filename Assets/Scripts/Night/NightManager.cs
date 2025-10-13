@@ -84,7 +84,7 @@ public class NightManager : MonoBehaviour
     {
         MoveEarthObject(night.moonBlockerOffset);
         SpawnBus();
-        Invoke("PlayScream", 3f);
+        Invoke("PlayScream", 10f);
         StartCoroutine(ShowNightText(night));
         StartCoroutine(SpawnMonster(night));
     }
