@@ -183,6 +183,7 @@ public class Player : MonoBehaviour
     public void SetInBus()
     {
         _currentState = State.InBus;
+        _audioManager.DisableWalkingAudio();
     }
 
     private void SetDead()
