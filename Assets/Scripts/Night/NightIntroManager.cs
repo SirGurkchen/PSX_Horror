@@ -7,6 +7,7 @@ public class NightIntroManager : MonoBehaviour
     [SerializeField] private NightSO[] _nightSOs;
     [SerializeField] private NightManager _nightManager;
     [SerializeField] private UIManager _uiManager;
+    [SerializeField] private Player _player;
 
 
     private int _nightCount = 0;
@@ -36,6 +37,7 @@ public class NightIntroManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(timer);
 
         DisableNightIntro();
+        _player.SetAlive();
     }
 
     private void DisableNightIntro()

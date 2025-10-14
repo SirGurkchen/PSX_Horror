@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask _interactMask;
     [SerializeField] private Transform _holdPoint;
     [SerializeField] private BusLogic _busLogic;
+    [SerializeField] private GameObject _sprintBar;
+
 
     public enum State { Walking, Running, Standing, InBus, Dead };
     private State _currentState;
@@ -69,6 +71,7 @@ public class Player : MonoBehaviour
     {
         if (_currentState == State.InBus && _fpController.enabled == true)
         {
+            _sprintBar.SetActive(false);
             _fpController.enabled = false;
         }
     }
@@ -90,7 +93,7 @@ public class Player : MonoBehaviour
 
     private void HandleInteractOutline()
     {
-        if (_currentState != State.InBus)
+        if (_fpController.enabled == true)
         {
             _previousInteractable = _lookInteractable;
             _lookInteractable = null;
@@ -186,6 +189,11 @@ public class Player : MonoBehaviour
     {
         _currentState = State.Dead;
     }
+
+    public bool IsInBus()
+    {
+        return _currentState == State.InBus;
+    }
     
     public bool PlayerIsStanding()
     {
@@ -195,6 +203,7 @@ public class Player : MonoBehaviour
     public void SetAlive()
     {
         _currentState = State.Standing;
+        _sprintBar.SetActive(true);
         _fpController.enabled = true;
     }
 }

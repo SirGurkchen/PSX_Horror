@@ -31,7 +31,6 @@ public class NightManager : MonoBehaviour
     public void ChooseNight(NightSO night)
     {
         ResetPlayerPosition();
-        _player.SetAlive();
         OnNewNight?.Invoke();
 
         switch (night.nightNumber)
@@ -100,6 +99,7 @@ public class NightManager : MonoBehaviour
 
     private void PlayNightSix(NightSO night)
     {
+        _player.SetAlive();
         ChangeMoonToRed();
         SpawnBus();
         StartCoroutine(ShowNightText(night));

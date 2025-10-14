@@ -1480,6 +1480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _outlineDoor: {fileID: 2023779122}
   _camManager: {fileID: 374243630}
+  _player: {fileID: 1440114994}
 --- !u!1 &234564166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,6 +1848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _outlineDoor: {fileID: 2023779122}
   _camManager: {fileID: 374243630}
+  _player: {fileID: 1440114994}
 --- !u!1001 &446691621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2155,6 +2157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _outlineDoor: {fileID: 2023779122}
   _camManager: {fileID: 374243630}
+  _player: {fileID: 1440114994}
 --- !u!1 &514012023
 GameObject:
   m_ObjectHideFlags: 0
@@ -7619,6 +7622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _outlineDoor: {fileID: 930521038}
   _camManager: {fileID: 374243630}
+  _player: {fileID: 1440114994}
 --- !u!1 &709640218
 GameObject:
   m_ObjectHideFlags: 0
@@ -7903,6 +7907,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f90b2105798a4d045afe83e22da4547f, type: 2}
   _nightManager: {fileID: 1299341541}
   _uiManager: {fileID: 850531527}
+  _player: {fileID: 1440114994}
 --- !u!4 &791084856
 Transform:
   m_ObjectHideFlags: 0
@@ -19259,6 +19264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _outlineDoor: {fileID: 930521038}
   _camManager: {fileID: 374243630}
+  _player: {fileID: 1440114994}
 --- !u!1 &1329331437
 GameObject:
   m_ObjectHideFlags: 0
@@ -29160,6 +29166,7 @@ MonoBehaviour:
     m_Bits: 384
   _holdPoint: {fileID: 2084644714}
   _busLogic: {fileID: 539284678}
+  _sprintBar: {fileID: 1066221009}
 --- !u!1001 &1491507331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29959,6 +29966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _outlineDoor: {fileID: 930521038}
   _camManager: {fileID: 374243630}
+  _player: {fileID: 1440114994}
 --- !u!1 &1883307004
 GameObject:
   m_ObjectHideFlags: 0
@@ -34922,6 +34930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _outlineDoor: {fileID: 930521038}
   _camManager: {fileID: 374243630}
+  _player: {fileID: 1440114994}
 --- !u!1 &1984303838
 GameObject:
   m_ObjectHideFlags: 0
@@ -35049,6 +35058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _outlineDoor: {fileID: 2023779122}
   _camManager: {fileID: 374243630}
+  _player: {fileID: 1440114994}
 --- !u!1 &2023779122
 GameObject:
   m_ObjectHideFlags: 0
@@ -35369,14 +35379,14 @@ SceneRoots:
   m_Roots:
   - {fileID: 705507995}
   - {fileID: 1254829929}
+  - {fileID: 216956060}
+  - {fileID: 850531528}
   - {fileID: 234564167}
   - {fileID: 1026922966}
   - {fileID: 1217226552}
   - {fileID: 90383760}
   - {fileID: 180634063}
-  - {fileID: 216956060}
   - {fileID: 514012026}
-  - {fileID: 850531528}
   - {fileID: 709640220}
   - {fileID: 455986816}
   - {fileID: 168990472}
